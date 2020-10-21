@@ -1,6 +1,6 @@
 package com.repositories;
 
-import com.entity.Address;
+import com.models.Address;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

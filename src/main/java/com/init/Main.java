@@ -1,7 +1,9 @@
 package com.init;
 
-import com.entity.Address;
-import com.entity.User;
+import com.clients.AddressClient;
+import com.clients.UserClient;
+import com.models.Address;
+import com.models.User;
 import com.services.AddressService;
 import com.services.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -14,13 +16,11 @@ public class Main {
         appContext.scan("com");
         appContext.refresh();
 
-        UserService userService = (UserService) appContext.getBean("userService");
-        List<User> allUsers = userService.getAllUsers();
-        allUsers.stream().forEach(System.out::println);
+        UserClient userClient = (UserClient)appContext.getBean("userClient");
+        userClient.run();
 
-        AddressService addressService = (AddressService) appContext.getBean("addressService");
-        List<Address> allAdresses = addressService.getAllAddresses();
-        allAdresses.stream().forEach(System.out::println);
+        AddressClient addressClient = (AddressClient) appContext.getBean("addressClient");
+        addressClient.run();
 
         appContext.close();
     }

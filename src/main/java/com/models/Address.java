@@ -1,7 +1,8 @@
-package com.entity;
+package com.models;
 
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "address")
@@ -20,6 +21,9 @@ public class Address {
 
     @Column(name = "homenumber")
     private String homeNumber;
+
+    @OneToMany(mappedBy = "addressForUser", cascade = CascadeType.ALL)
+    private Set<User> allUsersForAddress;
 
     public Address() {
     }
@@ -56,6 +60,14 @@ public class Address {
         this.homeNumber = homeNumber;
     }
 
+    public Set<User> getAllUsersForAddress() {
+        return allUsersForAddress;
+    }
+
+    public void setAllUsersForAddress(Set<User> allUsersForAddress) {
+        this.allUsersForAddress = allUsersForAddress;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,11 +86,10 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", city='" + city + '\'' +
-                ", street='" + street + '\'' +
-                ", homeNumber='" + homeNumber + '\'' +
-                '}';
+        return "Address {" +
+                "addressId = " + addressId +
+                ", city = '" + city + '\'' +
+                ", street = '" + street + '\'' +
+                ", homeNumber = '" + homeNumber + '}';
     }
 }

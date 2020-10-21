@@ -1,4 +1,4 @@
-package com.bl;
+package com.configurations;
 
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,7 @@ public class Utils {
         LocalContainerEntityManagerFactoryBean lfb = new LocalContainerEntityManagerFactoryBean();
         lfb.setDataSource(dataSource());
         lfb.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        lfb.setPackagesToScan("com.entity");
+        lfb.setPackagesToScan("com.models");
         return lfb;
     }
 

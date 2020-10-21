@@ -1,4 +1,4 @@
-package com.entity;
+package com.models;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -18,8 +18,8 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
+    @ManyToOne
+    @JoinColumn(name = "address_id")
     private Address addressForUser;
 
     public User() {
@@ -64,22 +64,21 @@ public class User {
         User user = (User) o;
         return Objects.equals(userId, user.userId) &&
                 Objects.equals(name, user.name) &&
-                Objects.equals(email, user.email) &&
-                Objects.equals(addressForUser, user.addressForUser);
+                Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, name, email, addressForUser);
+        return Objects.hash(userId, name, email);
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", addressForUser=" + addressForUser +
+        return "User {" +
+                "userId = " + userId +
+                ", name = '" + name + '\'' +
+                ", email = '" + email + '\'' +
+                ", addressForUser = " + addressForUser +
                 '}';
     }
 }

@@ -1,6 +1,6 @@
 package com.services;
 
-import com.entity.Address;
+import com.models.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.repositories.AddressRepository;
