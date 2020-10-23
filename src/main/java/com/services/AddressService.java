@@ -1,9 +1,8 @@
 package com.services;
 
 import com.models.Address;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import com.repositories.AddressRepository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -11,17 +10,16 @@ import java.util.List;
 @Service("addressService")
 public class AddressService {
 
-    @Autowired
+    final
     AddressRepository addressRepository;
+
+    public AddressService(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
+    }
 
     @Transactional
     public List<Address> getAllAddresses() {
         return (List<Address>) addressRepository.findAll();
-    }
-
-    @Transactional
-    public List<Address> findByCity(String city) {
-        return addressRepository.findByCity(city);
     }
 
     @Transactional

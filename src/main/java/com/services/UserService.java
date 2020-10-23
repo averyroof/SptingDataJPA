@@ -1,7 +1,6 @@
 package com.services;
 
 import com.models.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.repositories.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,17 +9,16 @@ import java.util.List;
 
 @Service("userService")
 public class UserService {
-    @Autowired
-    UserRepository userRepository;
+
+    final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Transactional
     public List<User> getAllUsers() {
         return (List<User>) userRepository.findAll();
-    }
-
-    @Transactional
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
     }
 
     @Transactional

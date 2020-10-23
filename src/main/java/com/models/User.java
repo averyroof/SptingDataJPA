@@ -5,6 +5,12 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
+@NamedQueries({
+        @NamedQuery(name = "User.findByNameQuery",
+                query = "Select u from User u where u.name in ('Tom', 'Emily') "),
+        @NamedQuery(name = "User.findByEmailQuery",
+                query = "Select u from User u where u.email like '%j%'"),
+})
 public class User {
 
     @Id
