@@ -3,12 +3,21 @@
 Используются: 
 
 @EnableJpaRepositories
+
 @NamedQuery
+
 @Query
+
 @Param
+
 CrudRepository
+
 Query builder mechanism 
+
 Sorting
+
 Pagination
+
 PagingAndSortingRepository
+
 Transactions
